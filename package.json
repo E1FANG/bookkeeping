@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "sass": "^1.50.1",
+    "vite-plugin-jsx": "^0.0.0",
     "vue": "^3.2.25",
     "vue-router": "4"
   },

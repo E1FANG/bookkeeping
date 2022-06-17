@@ -6,12 +6,14 @@ specifiers:
   sass: ^1.50.1
   typescript: ^4.5.4
   vite: ^2.9.0
+  vite-plugin-jsx: ^0.0.0
   vue: ^3.2.25
   vue-router: '4'
   vue-tsc: ^0.29.8
 
 dependencies:
   sass: 1.50.1
+  vite-plugin-jsx: 0.0.0
   vue: 3.2.33
   vue-router: 4.0.14_vue@3.2.33
 
@@ -1378,6 +1380,10 @@ packages:
     resolution: {integrity: sha512-1uEe95xksV1O0CYKXo8vQvN1JEbtJp7lb7C5U9HMsIp6IVwntkH/oNUzyVNQSd4S1sYk2FpSSW44FqMc8qee5w==}
     engines: {node: '>=4'}
     dev: true
+
+  /vite-plugin-jsx/0.0.0:
+    resolution: {integrity: sha512-5+BiSyfeavT04JVw/1SjqYxd/JMNvkEcyq33uVWYBLN9bugr0VcC4ZNqHr9WeYGYp5Fm6uWMtswvSsVOIjFqWw==}
+    dev: false
 
   /vite/2.9.5_sass@1.50.1:
     resolution: {integrity: sha512-dvMN64X2YEQgSXF1lYabKXw3BbN6e+BL67+P3Vy4MacnY+UzT1AfkHiioFSi9+uiDUiaDy7Ax/LQqivk6orilg==}
