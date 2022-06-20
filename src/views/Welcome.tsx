@@ -4,7 +4,7 @@ import { useSwipe } from '../hooks/useSwipe';
 import { throttle } from '../shared/throttle';
 import s from './Welcome.module.scss'
 
-const pushMap:Record<string,string> = {
+const replaceMap:Record<string,string> = {
   'Welcome1':'/welcome/2',
   'Welcome2':'/welcome/3',
   'Welcome3':'/welcome/4',
@@ -18,14 +18,14 @@ export const Welcome = defineComponent({
     })
     const route = useRoute()
     const router = useRouter()
-    const push = throttle(()=>{
+    const replace = throttle(()=>{
       const name = (route.name || 'Welcome1').toString()
-      router.push(pushMap[name])
+      router.replace(replaceMap[name])
     },500)
     watchEffect(() => {
       console.log(swiping.value, direction.value)
       if(swiping.value && direction.value === 'left'){
-        push()
+        replace()
       }
     })
     return () => <div class={s.wrapper}>
