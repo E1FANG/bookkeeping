@@ -2,7 +2,16 @@ import { computed, onMounted, onUnmounted, ref, Ref } from "vue"
 
 type Point= {x:number,y:number}
 
-export const useSwipe =(element:Ref<HTMLElement | null>)=>{
+interface Options {
+  beforeStart ?: (e:TouchEvent) => void
+  afterStart ?: (e:TouchEvent) => void
+  beforeMove ?: (e:TouchEvent) => void
+  afterMove ?: (e:TouchEvent) => void
+  beforeEnd ?: (e:TouchEvent) => void
+  afterEnd ?: (e:TouchEvent) => void
+}
+
+export const useSwipe =(element:Ref<HTMLElement | undefined>,options?:Options)=>{
   const start = ref<Point>()
   const end = ref<Point>()
   const swiping = ref(false)
@@ -18,13 +27,14 @@ export const useSwipe =(element:Ref<HTMLElement | null>)=>{
     if(!distance.value) return ''
     const {x,y} = distance.value
     if(Math.abs(x) - Math.abs(y) >0){
-      return x>0? 'right' : 'left'
+      return x>0?   'left'  :'right'
     }else{
       return y>0? 'down' : 'up'
     }
   })
 
   const onStart = (e:TouchEvent)=>{
+    options?.beforeStart?.(e)
     console.log('start');
     start.value={
       x:e.touches[0].clientX,
@@ -32,18 +42,22 @@ export const useSwipe =(element:Ref<HTMLElement | null>)=>{
     }
     end.value = undefined
     swiping.value = true
+    options?.afterStart?.(e)
   }
 
 const onMove = (e:TouchEvent)=>{
+  options?.beforeMove?.(e)
   end.value={
     x:e.touches[0].clientX,
     y:e.touches[0].clientY
   }
+  options?.afterMove?.(e)
 }
 
 const onEnd = (e:TouchEvent)=>{
-  console.log('end');
+  options?.beforeEnd?.(e)
   swiping.value = false
+  options?.afterEnd?.(e)
 }
 
   onMounted(() => {
