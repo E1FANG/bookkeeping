@@ -1,0 +1,17 @@
+.FloatButton{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  background: var(--float-button-bg);
+  height: 56px;
+  width: 56px;
+  border-radius: 50%;
+  .icon{
+    height: 32px;
+    width: 32px;
+    fill:var(--float-button-color)
+  }
+}
